@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Doctor
+
+<h2>Category Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This doctor does not have any patients.</p>
+}
+else
+{
+  <h4>Patients that see this doctor:</h4>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Patient.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add Patient", "Create", "Patients", new {}, new { @class = "btn btn-outline-primary" })</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new {id = Model.DoctorId }, new { @class = "btn btn-outline-primary" })</p>
+<p>@Html.ActionLink("Back to Doctor list", "Index", new {}, new { @class = "btn btn-outline-primary" })</p>
