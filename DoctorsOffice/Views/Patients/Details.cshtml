@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<h2>Patient Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+
+  <p>This patient does not belong to any doctors</p>
+}
+else 
+{
+  <h4>Doctors the Patient belongs to:</h4>
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.Doctor.Name</li>
+      //Creates a seperate Delete button for each category. The first arg. passed into the form is route method, the second is the controller. The point of this is to delete the entry in the join table.
+      @using (Html.BeginForm("DeleteDoctor", "Patients"))
+      {
+        //First arg. is the name of the route parameter being passed, the second is the actual value of that parameter. 
+        @Html.Hidden("joinId", @join.DoctorPatientId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+<p>@Html.ActionLink("Add a doctor", "AddDoctor", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

@@ -1,7 +1,7 @@
 <!-- Change to Project Name -->
 # _To Do List in C#_
 
-#### By _**Chris Nakayama and Nick Sullivan**_
+#### By _**Chris Nakayama Nick Sullivan**_
 
 #### _A simple to do list tracker._
 
@@ -12,6 +12,7 @@
 * _ASP.NET Core_
 * _Bootstrap_
 * _Razor View Engine_
+* _Entity Framework Core_
 
 ## Description
 
@@ -21,16 +22,27 @@ _This simple web application allows users input different items that will then b
 
 * _Open your terminal and navigate to the folder you'd like to download the files into._
 * _Run the command below_
-> git clone https://github.com/nicholassull/to-do-list-c-sharp.git
-* _Navigate to ToDoList.Solution/ToDoList in your terminal._
+> git clone https://github.com/nicholassull/university-registrar.git
+* _Download [MySQL Workbench](https://www.mysql.com/products/workbench/) and use it to create a local instance and an associated password._
+* Within the directory ~/UniversityRegistrar, create a file named appsettings.json and input the lines of code bellow.
+> {
+  "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=university_registrar;uid=root;pwd=[YOUR-PASSWORD];"
+  }
+}
+  * Replace [YOUR-PASSWORD] with the password you created within MySQL Workbench and make sure the port matches your own.
+* _Navigate to ~/UniversityRegistrar in your terminal._
 * _Run the commands below_
->dotnet restore
+>dotnet tool install --global dotnet-ef --version 3.0.0
+
+>dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0.0
+
+>dotnet ef database update
 
 >dotnet build
 
 >dotnet run
 * _Copy and paste the local host URL provided in the terminal into a web browser and enjoy!_
-
 ## Known Bugs
 
 * _No known bugs at this time._

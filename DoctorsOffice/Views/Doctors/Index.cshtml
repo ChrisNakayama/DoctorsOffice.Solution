@@ -1,17 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+@using DoctorsOffice.Models;
+@model List<DoctorsOffice.Models.Doctor>;
 
-    @{
-      Layout = "_Layout";
-    }
-    @using DoctorsOffice.Models;
-    @model List<DoctorsOffice.Models.Doctor>;
-
-    <h1>Doctors</h1>
-    <hr />
-    <ul>
-      @foreach(Doctor doctor in Model)
-      {
-        <li>@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId })</li>
-      }
-    </ul>
-    <p> @Html.ActionLink("Add Doctor", "Create", new {}, new { @class = "btn btn-outline-primary" })</p>
+<h1>Doctors</h1>
+<hr />
+<ul>
+  @foreach(Doctor doctor in Model)
+  {
+    <li>@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId })</li>
+  }
+</ul>
+<p> @Html.ActionLink("Add Doctor", "Create", new {}, new { @class = "btn btn-outline-primary" })</p>
 

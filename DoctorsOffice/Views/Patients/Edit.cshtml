@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<h2>Edit</h2>
+
+<h4>Edit patient details: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PatientId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.Label("Select doctor")
+    //Since we saved the list of doctors inside ViewBag.DoctorId, we can provide that here as a string name.
+    @Html.DropDownList("DoctorId")
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to list", "Index")</p>
