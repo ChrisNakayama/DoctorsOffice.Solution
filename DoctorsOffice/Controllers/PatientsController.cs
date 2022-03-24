@@ -80,7 +80,7 @@ namespace DoctorsOffice.Controllers
     public ActionResult AddDoctor(int id)
     {
       var thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
-      ViewBag.PatientId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
       return View(thisPatient);
     }
     [HttpPost]
